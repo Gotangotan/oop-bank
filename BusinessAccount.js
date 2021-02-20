@@ -14,7 +14,7 @@ class BusinessAccount extends Account {
         }
     }
     makeWithdrawal(amount){
-        if (amount < this.balance + this.creditLimit && amount < this.dailyLimit ){
+        if (amount < this.balance + this.creditLimit && amount < this.dailyLimit){
             this.balance = this.balance - amount
         }
     }
