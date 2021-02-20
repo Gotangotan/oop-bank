@@ -1,12 +1,12 @@
 // Export your class here as module.exports = MyClass
-
-class BusinessAccount{
+const Account = require('./Account')
+class BusinessAccount extends Account {
 
     constructor(name, balance, creditLimit, sepaPermission) {
-        this.name = name;
-        this.balance = balance;
-        this.creditLimit = creditLimit;
+        super(name, balance, creditLimit);
+        this.dailyLimit = 20000
         this.sepaPermission = sepaPermission;
+
     }
     makeDeposit(amount){
         if(amount > 0 ){
@@ -14,7 +14,7 @@ class BusinessAccount{
         }
     }
     makeWithdrawal(amount){
-        if (amount < this.balance + this.creditLimit && amount < 20000 ){
+        if (amount < this.balance + this.creditLimit && amount < this.dailyLimit ){
             this.balance = this.balance - amount
         }
     }
